@@ -1,4 +1,4 @@
-<?
+<?php
 /*
  * class.Thumbnail.php
  *
@@ -154,12 +154,21 @@ class Thumbnail {
 	switch ($this->format) {
 	    case "GIF":
 		$old_image = ImageCreateFromGif($this->file);
+		$alpha = imagecolortransparent($old_image);
+		if($alpha >= 0){
+		  $trnprt_color    = imagecolorsforindex($old_image, $alpha);
+		  $trnprt_indx    = imagecolorallocate($new_image, $trnprt_color['red'], $trnprt_color['green'], $trnprt_color['blue']);
+		  imagefill($new_image, 0, 0, $trnprt_indx);
+		  imagecolortransparent($new_image, $trnprt_indx);
+		}
 		break;
 	    case "JPEG":
 		$old_image = ImageCreateFromJpeg($this->file);
 		break;
 	    case "PNG":
 		$old_image = ImageCreateFromPng($this->file);
+		imagealphablending($new_image, false);
+		imagesavealpha($new_image, true);
 		break;
 	}
 
@@ -213,4 +222,3 @@ class Thumbnail {
 	$this->show($name);
     }
 }
-?>
