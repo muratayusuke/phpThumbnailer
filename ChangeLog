@@ -1,0 +1,40 @@
+2006-09-28  Hidayet Dogan (version 1.5)
+
+        * Image resize calculation bug fixed (at least). Thanks Peter Barkway
+          for reporting and fixing.
+
+2006-05-15  Hidayet Dogan (version 1.4)
+
+        * Added JPEG quality option (default is 75).
+        * Added ImageCopyResampled check to get better quality thumbnails
+          when using ImageCreateTrueColor function.
+
+2005-12-20  Hidayet Dogan (version 1.3)
+
+	* Image resizing calculation functions has been modified. It will 
+	  prevent if the original image width or height is smaller than 
+	  given maximum width and height.
+
+
+2005-07-12  Hidayet Dogan (version 1.2a)
+
+	* Fixed bug in show() function. It was always trying to save 
+	  thumbnail image onto disk when the image format is PNG.
+
+
+2005-03-29  Hidayet Dogan (version 1.2)
+
+	* Added save() function to save thumbnails on disc (It does not
+          show thumbnailed images).
+	* Contact details, web address and Changelog re-organized.
+
+
+2002-05-18  Hidayet Dogan (version 1.1)
+
+	* Added Mariano Cano Pérez's idea (resize a true color image) for
+	  PHP >= 4.0.6 (requires GD 2.0.1).
+
+
+2001-11-19  Hidayet Dogan (version 1.0)
+
+        * First release of phpThumbnailer.
